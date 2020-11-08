@@ -6,7 +6,7 @@ function something()
   alert(x);
 }
 
-function add_to_cart()
+function add_to_cart(id)
 {
-  alert('Hello from function!');
+  alert('Вы выбрали пиццу с id: ' + id);
 }
