@@ -4,21 +4,20 @@
   <div class="row">
     <% @products.each do |product| %>
       <div class="col-md-4">
-        <img src="<%= product.path_to_image %>" >
-        <br>
-        <br>
-        <div class="row">
-          <div class="col-md-6">
-            <span style="font-size: 150%; color: blue"><%= product.title %></span>
-          </div>
-          <div class="col-md-6">
-            <span style="font-size: 150%; color: red"><%= product.price %></span>
-          </div>
+        <div>
+          <img src="<%= product.path_to_image %>" >
         </div>
-        <p><%= product.description %>
+        <br>
+        <div>
+          <span style="font-size: 130%; color: blue"><%= product.title %></span>
+        </div>
+        <div><%= product.description %>
           <br>
-          Размер: <%= product.size %>
-        </p>
+          Размер: <%= product.size %> см.
+        </div>
+        <div>
+          Цена: <%= product.price %> грн.
+        </div>
       </div>
     <% end %>
   </div>
