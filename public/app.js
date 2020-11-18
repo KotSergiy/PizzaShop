@@ -14,6 +14,7 @@ function add_to_cart(id)
   window.localStorage.setItem(key,x);
 
   update_orders_input();
+  update_orders_button();
 }
 
 function show_total_in_cart()
@@ -29,7 +30,7 @@ function show_total_in_cart()
       total=total*1 + value*1;
   }
 
-  alert(total);
+  return total;
 }
 
 function cart_get_orders()
@@ -52,4 +53,10 @@ function update_orders_input()
 {
   var orders=cart_get_orders();
   $('#orders_input').val(orders);
+}
+
+function update_orders_button()
+{
+  var text = 'Корзина(' + show_total_in_cart() + ')';
+  $('#orders_button').val(text);
 }
