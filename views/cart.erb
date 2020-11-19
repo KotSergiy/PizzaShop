@@ -1,0 +1,14 @@
+<h2>Ваша корзина заказов в Pizza Shop!</h2>
+<br>
+<table class="table">
+  <tr>
+    <th>Наименование</th>
+    <th>Количество</th>
+  </tr>
+  <% @orders.each do |arr| %>
+    <tr>
+      <td><%=@hh[arr[0]]%></td>
+      <td><%=arr[1]%></td>
+    </tr>
+  <%end%>
+</table>

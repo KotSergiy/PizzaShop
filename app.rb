@@ -15,5 +15,18 @@ get '/' do
 end
 
 post '/cart' do
-	erb 'Hello!'
+	@orders=[]
+	
+	products=params['orders'].split(';')
+	products.each do |str|
+		@orders << str.split('=')
+	end
+
+	@hh={
+		'product_1'=>'Гавайская пицца',
+		'product_2'=>'Пеперонни пицца',
+		'product_3'=>'Овощная пицца'
+	}
+
+	erb :cart
 end
