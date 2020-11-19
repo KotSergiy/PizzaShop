@@ -16,7 +16,7 @@ end
 
 post '/cart' do
 	@orders=[]
-	
+
 	products=params['orders'].split(';')
 	products.each do |str|
 		@orders << str.split('=')
@@ -29,4 +29,8 @@ post '/cart' do
 	}
 
 	erb :cart
+end
+
+post '/order' do
+
 end
