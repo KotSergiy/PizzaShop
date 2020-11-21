@@ -24,22 +24,18 @@ end
 post '/cart' do
 	$orders=[]
 
-	products=params['orders'].split(';')
-	products.each do |str|
-		$orders << str.split('=')
+	cart_list=params['orders'].split(';')
+	cart_list.each do |str|
+		arr=str.split('=')
+		arr[0]=(arr[0].split('_'))[1]
+		$orders << arr
 	end
-
-	$hh={
-		'product_1'=>'Гавайская пицца',
-		'product_2'=>'Пеперонни пицца',
-		'product_3'=>'Овощная пицца'
-	}
 
 	@order=Order.new
 
 	$product_list=''
 	$orders.each do |arr|
-		$product_list+=($hh[arr[0]]+'='+arr[1]+';')
+		$product_list+=arr[0]+'='+arr[1]+';'
 	end
 
 	erb :cart
