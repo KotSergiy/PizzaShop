@@ -14,14 +14,24 @@
         <th>Количество</th>
         <th>Сумма</th>
       </tr>
+      <%total_price=0%>
+      <%total_qnt=0%>
       <% $order_items.each do |arr| %>
         <tr>
           <td><%=arr[0].title%></td>
           <td><%=arr[0].price%></td>
-          <td><%=arr[1]%></td>
-          <td><%=arr[0].price*arr[1].to_i%></td>
+          <td><%=qnt=arr[1].to_i%></td>
+          <td><%=sum=arr[0].price*arr[1].to_i%></td>
+          <%total_qnt+=qnt%>
+          <%total_price+=sum%>
         </tr>
       <%end%>
+      <tr>
+        <td>Итого:</td>
+        <td></td>
+        <td><%=total_qnt%></td>
+        <td><%=total_price%></td>
+      </tr>
     </table>
 
     <form action="/order" method="post">
