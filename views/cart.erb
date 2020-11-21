@@ -14,12 +14,12 @@
         <th>Количество</th>
         <th>Сумма</th>
       </tr>
-      <% $orders.each do |arr| %>
+      <% $order_items.each do |arr| %>
         <tr>
-          <td><%=(Product.find(arr[0])).title%></td>
-          <td><%=(Product.find(arr[0])).price%></td>
+          <td><%=arr[0].title%></td>
+          <td><%=arr[0].price%></td>
           <td><%=arr[1]%></td>
-          <td><%=(Product.find(arr[0])).price*arr[1].to_i%></td>
+          <td><%=arr[0].price*arr[1].to_i%></td>
         </tr>
       <%end%>
     </table>

@@ -22,20 +22,21 @@ get '/' do
 end
 
 post '/cart' do
-	$orders=[]
+	$order_items=[]
 
 	cart_list=params['orders'].split(';')
 	cart_list.each do |str|
 		arr=str.split('=')
 		arr[0]=(arr[0].split('_'))[1]
-		$orders << arr
+		$order_items << arr
 	end
 
 	@order=Order.new
 
 	$product_list=''
-	$orders.each do |arr|
-		$product_list+=arr[0]+'='+arr[1]+';'
+	$order_items.each do |arr|
+		arr[0]=Product.find(arr[0])
+		$product_list+=arr[0].id.to_s+'='+arr[1]+';'
 	end
 
 	erb :cart
