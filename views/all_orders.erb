@@ -1,0 +1,14 @@
+<h2>Все заказы</h2>
+<br>
+<% @all_orders.each do |order| %>
+  <p>
+    Заказ №<%= order.id %>
+    <br>
+    <%= order.name %>, тел. <%= order.phone %>, <%= order.address %>
+    <br>
+    <%= order.product_list %>
+    <br>
+    Дата: <%= order.created_at %>
+  </p>
+  <hr>
+<%end%>
