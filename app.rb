@@ -31,6 +31,10 @@ post '/cart' do
 		$order_items << arr
 	end
 
+	if $order_items.length==0
+		return erb :cart_is_empty
+	end
+
 	@order=Order.new
 
 	$product_list=''
