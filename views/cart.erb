@@ -5,54 +5,57 @@
     <title></title>
   </head>
   <body>
-    <h4>Ваша корзина заказов в Pizza Shop!</h2>
-    <br>
-    <table class="table">
-      <tr>
-        <th>Наименование</th>
-        <th>Цена</th>
-        <th>Количество</th>
-        <th>Сумма</th>
-      </tr>
-      <%total_price=0%>
-      <%total_qnt=0%>
-      <% $order_items.each do |arr| %>
-        <tr>
-          <td><%=arr[0].title%></td>
-          <td><%=arr[0].price%></td>
-          <td><%=qnt=arr[1].to_i%></td>
-          <td><%=sum=arr[0].price*arr[1].to_i%></td>
-          <%total_qnt+=qnt%>
-          <%total_price+=sum%>
-        </tr>
-      <%end%>
-      <tr>
-        <td>Итого:</td>
-        <td></td>
-        <td><%=total_qnt%></td>
-        <td><%=total_price%></td>
-      </tr>
-    </table>
-
-    <form action="/order" method="post">
-      <div class="form-group">
-        <label>Ваше имя:</label>
-        <input name="order[name]" type="text" class="form-control" value="<%=@order.name%>" placeholder="Фамилия Имя Отчество">
-      </div>
-
-      <div class="form-group">
-        <label>Ваш телефон:</label>
-        <input name="order[phone]" type="text" class="form-control" value="<%=@order.phone%>" placeholder="Телефон">
-      </div>
-
-      <div class="form-group">
-        <label>Адрес доставки:</label>
-        <input name="order[address]" type="text" class="form-control" value="<%=@order.address%>" placeholder="Улица Дом Квартира">
-      </div>
-
-      <input name="order[product_list]" type="hidden" value="<%=$product_list%>"/>
+    <div id="cart">
+      <h4>Ваша корзина заказов в Pizza Shop!</h4>
       <br>
-      <button type="submit" class="btn btn-success btn-lg">Заказать</button>
-    </form>
+      <table class="table">
+        <tr>
+          <th>Наименование</th>
+          <th>Цена</th>
+          <th>Количество</th>
+          <th>Сумма</th>
+        </tr>
+        <%total_price=0%>
+        <%total_qnt=0%>
+        <% $order_items.each do |arr| %>
+          <tr>
+            <td><%=arr[0].title%></td>
+            <td><%=arr[0].price%></td>
+            <td><%=qnt=arr[1].to_i%></td>
+            <td><%=sum=arr[0].price*arr[1].to_i%></td>
+            <%total_qnt+=qnt%>
+            <%total_price+=sum%>
+          </tr>
+        <%end%>
+        <tr>
+          <td>Итого:</td>
+          <td></td>
+          <td><%=total_qnt%></td>
+          <td><%=total_price%></td>
+        </tr>
+      </table>
+
+      <form action="/order" method="post">
+        <div class="form-group">
+          <label>Ваше имя:</label>
+          <input name="order[name]" type="text" class="form-control" value="<%=@order.name%>" placeholder="Фамилия Имя Отчество">
+        </div>
+
+        <div class="form-group">
+          <label>Ваш телефон:</label>
+          <input name="order[phone]" type="text" class="form-control" value="<%=@order.phone%>" placeholder="Телефон">
+        </div>
+
+        <div class="form-group">
+          <label>Адрес доставки:</label>
+          <input name="order[address]" type="text" class="form-control" value="<%=@order.address%>" placeholder="Улица Дом Квартира">
+        </div>
+
+        <input name="order[product_list]" type="hidden" value="<%=$product_list%>"/>
+        <br>
+        <button type="submit" class="btn btn-success btn-lg">Заказать</button>
+        <button type="button" class="btn btn-danger btn-lg" onclick="cancel_order()">Отменить</button>
+      </form>
+    </div>
   </body>
 </html>

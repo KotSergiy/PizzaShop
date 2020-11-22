@@ -57,3 +57,11 @@ function clear_cart()
 {
   window.localStorage.clear();
 }
+
+function cancel_order()
+{
+    clear_cart();
+    update_orders_input();
+    update_orders_button();
+    $('#cart').text('Ваша корзина очищена.');
+}
