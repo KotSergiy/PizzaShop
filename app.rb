@@ -57,6 +57,6 @@ post '/order' do
 end
 
 get '/all_orders' do
-	@all_orders=Order.all
+	@all_orders=Order.all.order 'created_at DESC'
 	erb :all_orders
 end
